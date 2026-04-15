@@ -4,9 +4,8 @@
 <head>
 </head>
 <body>
-  <br>
-  <h2>project : </h2><h3> Data Preprocessing and Model Development using Logistic 
-Regression with GitHub Collaboration </h3>
+  <h2>project : </h2><a> Data Preprocessing and Model Development using Logistic 
+Regression with GitHub Collaboration </a>
   <hr>
 <table>
 <tr>
