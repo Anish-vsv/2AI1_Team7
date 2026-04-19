@@ -17,12 +17,12 @@
 | Name    |           Role           |
 | ------  |--------------------------|   
 | Anish   | Project Lead             |
-| Anish   | Backend Developer        |
+| Anish   | feature engineering      |
 | Aryan   | Frontend Developer       |
 | Vinay   | ML Engineer              |
 | rishi   | Data Preprocessing       |
 | Zufishan| Deployment Engineer      |
-| Ujwal   |  Documentation & Testing |
+| Anish   | Documentation & Testing  |
 
 ---
 
