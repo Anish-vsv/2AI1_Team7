@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+
+        .result-box {
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .survived {
+            color: #00ffcc;
+            font-size: 26px;
+        }
+
+        .not-survived {
+            color: #ff4d4d;
+            font-size: 26px;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            border-radius: 10px;
+            background: white;
+            color: #333;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="result-box">
+        <h1>Prediction Result</h1>
+
+        <!-- Flask Variable -->
+        {% if prediction == 1 %}
+            <p class="survived">🎉 Passenger Survived</p>
+        {% else %}
+            <p class="not-survived">❌ Passenger Did Not Survive</p>
+        {% endif %}
+
+        <a href="/">Try Again</a>
+    </div>
+</body>
+</html>
