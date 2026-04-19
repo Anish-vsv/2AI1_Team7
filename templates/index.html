@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Titanic Survival Predictor</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    height:100vh;
+    overflow:hidden;
+    background: linear-gradient(to bottom, #020111 0%, #191621 100%);
+}
+
+/* 🌊 Waves */
+.wave{
+    position:absolute;
+    bottom:0;
+    width:200%;
+    height:200px;
+    background: rgba(0,150,255,0.4);
+    border-radius:100%;
+    animation: waveMove 10s linear infinite;
+}
+
+.wave:nth-child(2){
+    bottom:20px;
+    opacity:0.5;
+    animation-duration:15s;
+}
+
+.wave:nth-child(3){
+    bottom:40px;
+    opacity:0.3;
+    animation-duration:20s;
+}
+
+@keyframes waveMove{
+    0%{ transform: translateX(0); }
+    100%{ transform: translateX(-50%); }
+}
+
+/* 🌟 Bubbles */
+.bubble{
+    position:absolute;
+    bottom:-50px;
+    width:10px;
+    height:10px;
+    background: rgba(255,255,255,0.3);
+    border-radius:50%;
+    animation: rise 8s infinite;
+}
+
+@keyframes rise{
+    0%{ transform:translateY(0); opacity:1; }
+    100%{ transform:translateY(-100vh); opacity:0; }
+}
+
+/* 🚢 Card */
+.container{
+    position:relative;
+    z-index:10;
+    width:360px;
+    margin:auto;
+    top:50%;
+    transform:translateY(-50%);
+    padding:30px;
+    border-radius:20px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(15px);
+    box-shadow:0 0 30px rgba(0,150,255,0.5);
+    text-align:center;
+    animation: fadeIn 1s ease;
+}
+
+h1{
+    color:white;
+    margin-bottom:20px;
+}
+
+/* Inputs */
+input, select{
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+    border:none;
+    border-radius:10px;
+    outline:none;
+    transition:0.3s;
+}
+
+input:focus, select:focus{
+    transform:scale(1.05);
+}
+
+/* 🔥 ULTRA BUTTON */
+button{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:12px;
+    font-size:16px;
+    color:white;
+    cursor:pointer;
+    background: linear-gradient(270deg, #00c6ff, #0072ff, #00c6ff);
+    background-size: 600% 600%;
+    animation: gradientMove 5s ease infinite;
+    position:relative;
+    overflow:hidden;
+    transition:0.3s;
+}
+
+button::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
+    transition:0.5s;
+}
+
+button:hover::before{
+    left:100%;
+}
+
+button:hover{
+    transform:scale(1.07);
+    box-shadow:0 0 20px #00c6ff, 0 0 40px #0072ff;
+}
+
+button:active{
+    transform:scale(0.95);
+}
+
+@keyframes gradientMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+@keyframes fadeIn{
+    from{ opacity:0; transform:translateY(30px); }
+    to{ opacity:1; transform:translateY(0); }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Waves -->
+<div class="wave"></div>
+<div class="wave"></div>
+<div class="wave"></div>
+
+<!-- Bubbles -->
+<script>
+for(let i=0;i<25;i++){
+    let bubble = document.createElement("div");
+    bubble.className="bubble";
+    bubble.style.left = Math.random()*100+"%";
+    bubble.style.animationDuration = (5 + Math.random()*5)+"s";
+    document.body.appendChild(bubble);
+}
+</script>
+
+<!-- Form -->
+<div class="container">
+    <h1>🚢 Titanic Predictor</h1>
+
+    <form action="/predict" method="post">
+
+        <input type="number" name="Pclass" placeholder="Passenger Class" required>
+
+        <select name="Sex">
+            <option disabled selected>Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+
+        <input type="number" step="any" name="Age" placeholder="Age" required>
+
+        <input type="number" name="SibSp" placeholder="Siblings/Spouses" required>
+
+        <input type="number" name="Parch" placeholder="Parents/Children" required>
+
+        <input type="number" step="any" name="Fare" placeholder="Fare" required>
+
+        <button type="submit">Predict</button>
+
+    </form>
+</div>
+
+</body>
+</html>
