@@ -1,26 +1,38 @@
 from flask import Flask, render_template, request
 import pickle
 import numpy as np
+import os
 
 app = Flask(__name__)
 
-# Load your pre-trained model
-model = pickle.load(open('model.pkl', 'rb'))
+# Load model safely
+model = pickle.load(open("model.pkl", "rb"))
 
-@app.route('/')
+@app.route("/")
 def home():
-    return render_template('index.html')
+    return render_template("index.html")
 
-@app.route('/predict', methods=['POST'])
+@app.route("/predict", methods=["POST"])
 def predict():
-    # Extract data from the HTML form
-    features = [float(x) for x in request.form.values()]
-    final_features = [np.array(features)]
-    
-    # Make a prediction
-    prediction = model.predict(final_features)
-    
-    return render_template('index.html', prediction_text=f'Prediction: {prediction[0]}')
+    try:
+        pclass = int(request.form["Pclass"])
+        sex = int(request.form["Sex"])
+        age = float(request.form["Age"])
+        sibsp = int(request.form["SibSp"])
+        parch = int(request.form["Parch"])
+        fare = float(request.form["Fare"])
 
-if __name__ == '__main__':
-    app.run(debug=True)
+        features = np.array([[pclass, sex, age, sibsp, parch, fare]])
+        prediction = model.predict(features)
+
+        result = "Survived" if prediction[0] == 1 else "Not Survived"
+
+        return render_template("index.html", prediction_text=result)
+
+    except Exception as e:
+        return render_template("index.html", prediction_text=str(e))
+
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))  # important for deployment
+    app.run(host="0.0.0.0", port=port)
