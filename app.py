@@ -5,8 +5,9 @@ import os
 
 app = Flask(__name__)
 
-# Load model safely
-model = pickle.load(open("model.pkl", "rb"))
+# Safe model loading
+model_path = os.path.join(os.path.dirname(__file__), "model.pkl")
+model = pickle.load(open(model_path, "rb"))
 
 @app.route("/")
 def home():
@@ -32,7 +33,6 @@ def predict():
     except Exception as e:
         return render_template("index.html", prediction_text=str(e))
 
-
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))  # important for deployment
-    app.run(host="0.0.0.0", port=port)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=True)
