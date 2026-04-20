@@ -21,7 +21,7 @@
 | Aryan   | Frontend Developer       |
 | Vinay   | ML Engineer              |
 | rishi   | Data Preprocessing       |
-| Zufishan| modal building | 
+| Zufishan| model building | 
 | Yuvraj   | model evalution|  
 | Anish   | model deployment            |
 | Anish   | Documentation & Testing  |
