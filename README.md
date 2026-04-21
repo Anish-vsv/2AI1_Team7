@@ -35,7 +35,7 @@ Predict whether a passenger survived or not using machine learning.
 | Anish   | Project Lead             |
 | Ujwalsinh   | feature engineering      |
 | Aryan   | Frontend Developer       |
-| Vinay   | ML Engineer              |
+| Vinay   | EDA              |
 | rishi   | Data Preprocessing       |
 | Zufishan| model building | 
 | Yuvraj   | model evalution|  
