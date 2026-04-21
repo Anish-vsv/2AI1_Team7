@@ -1,4 +1,20 @@
+## 🎯 Problem Statement
 
+Predict whether a passenger survived or not using machine learning.
+
+---
+
+## 📊 Dataset Used
+
+* titanic-train.csv
+* titanic-test.csv
+
+👉 These datasets contain passenger details like:
+
+* Age
+* Sex
+* Fare
+* Passenger Class
 ---
 
 ## 📊 How It Works
